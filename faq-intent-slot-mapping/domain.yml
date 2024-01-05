@@ -1,0 +1,326 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - faq_tuition
+  - faq_football
+  - faq_basketball
+  - faq_swimming
+  - faq_rowing
+  - inform
+
+entities:
+  - school_name
+
+actions:
+  - validate_school_form
+
+forms:
+  school_form:
+    required_slots:
+      - school_name
+
+slots:
+  trigger_intent:
+    type: categorical
+    values:
+      - faq_football
+      - faq_basketball
+      - faq_swimming
+      - faq_rowing
+  school_name:
+    type: categorical
+    mappings:
+      - type: from_entity
+        entity: school_name
+    values:
+      - uc_berkeley
+      - stanford
+      - san_jose_state
+      - uc_davis
+      - santa_clara
+      - sf_state
+      - st_marys
+      - cal_state_east_bay
+      - usf
+      - other
+
+responses:
+  utter_ask_school_name:
+  - text: "What school are you interested in?"
+    buttons:
+    - title: "UC Berkeley"
+      payload: '/inform{{"school_name": "uc_berkeley"}}'
+    - title: "Stanford"
+      payload: '/inform{{"school_name": "stanford"}}'
+    - title: "UC Davis"
+      payload: '/inform{{"school_name": "uc_davis"}}'
+    - title: "Santa Clara"
+      payload: '/inform{{"school_name": "santa_clara"}}'
+    - title: "San Francisco State"
+      payload: '/inform{{"school_name": "sf_state"}}'
+    - title: "St. Marys"
+      payload: '/inform{{"school_name": "st_marys"}}'
+    - title: "Cal State"
+      payload: '/inform{{"school_name": "cal_state_east_bay"}}'
+    - title: "USF"
+      payload: '/inform{{"school_name": "usf"}}'
+
+  utter_faq_msg:
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_berkeley
+    - type: slot
+      name: trigger_intent
+      value: faq_football
+    text: "The UC Berkeley football team is called the Golden Bears."
+  - condition:
+    - type: slot
+      name: school_name
+      value: stanford
+    - type: slot
+      name: trigger_intent
+      value: faq_football
+    text: "The Stanford football team is called the Cardinal."
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_davis
+    - type: slot
+      name: trigger_intent
+      value: faq_football
+    text: "The UC Davis football team is called the Aggies."
+  - condition:
+    - type: slot
+      name: trigger_intent
+      value: faq_football
+    text: "{school_name} does not have a football team."
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_berkeley
+    - type: slot
+      name: trigger_intent
+      value: faq_basketball
+    text: "The UC Berkeley basketball team is called the Golden Bears."
+  - condition:
+    - type: slot
+      name: school_name
+      value: stanford
+    - type: slot
+      name: trigger_intent
+      value: faq_basketball
+    text: "The Stanford basketball team is called the Cardinal."
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_davis
+    - type: slot
+      name: trigger_intent
+      value: faq_basketball
+    text: "The UC Davis basketball team is called the Aggies."
+  - condition:
+    - type: slot
+      name: school_name
+      value: santa_clara
+    - type: slot
+      name: trigger_intent
+      value: faq_basketball
+    text: "The Santa Clara basketball team is called the Broncos."
+  - condition:
+    - type: slot
+      name: school_name
+      value: sf_state
+    - type: slot
+      name: trigger_intent
+      value: faq_basketball
+    text: "The San Francisco State has a basketball team called the Gators."
+  - condition:
+    - type: slot
+      name: school_name
+      value: st_marys
+    - type: slot
+      name: trigger_intent
+      value: faq_basketball
+    text: "The St Marys has a basketball team called the Gaels."
+  - condition:
+    - type: slot
+      name: school_name
+      value: cal_state_east_bay
+    - type: slot
+      name: trigger_intent
+      value: faq_basketball
+    text: "The Cal State East Bay basketball team is called the Pioneers"
+  - condition:
+    - type: slot
+      name: school_name
+      value: usf
+    - type: slot
+      name: trigger_intent
+      value: faq_basketball
+    text: "The USF has a basketball team called the Dons."
+  - condition:
+    - type: slot
+      name: trigger_intent
+      value: faq_basketball
+    text: "{school_name} does not have a basketball team."
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_berkeley
+    - type: slot
+      name: trigger_intent
+      value: faq_swimming
+    text: "The UC Berkeley swimming team is called the Golden Bears."
+  - condition:
+    - type: slot
+      name: school_name
+      value: stanford
+    - type: slot
+      name: trigger_intent
+      value: faq_swimming
+    text: "The Stanford swimming team is called the Cardinal."
+  - condition:
+    - type: slot
+      name: trigger_intent
+      value: faq_swimming
+    text: "{school_name} does not have a swimming team."
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_berkeley
+    - type: slot
+      name: trigger_intent
+      value: faq_rowing
+    text: "The UC Berkeley rowing team is called the Golden Bears."
+  - condition:
+    - type: slot
+      name: school_name
+      value: stanford
+    - type: slot
+      name: trigger_intent
+      value: faq_rowing
+    text: "The Stanford rowing team is called the Cardinal."
+  - condition:
+    - type: slot
+      name: trigger_intent
+      value: faq_rowing
+    text: "{school_name} does not have a rowing team."
+  - text: "No message for school: {school_name}, intent: {trigger_intent}"
+
+  utter_football:
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_berkeley
+    text: "The UC Berkeley football team is called the Golden Bears."
+  - condition:
+    - type: slot
+      name: school_name
+      value: stanford
+    text: "The Stanford football team is called the Cardinal."
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_davis
+    text: "The UC Davis football team is called the Aggies."
+  - text: "{school_name} does not have a football team."
+
+  utter_basketball:
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_berkeley
+    text: "The UC Berkeley basketball team is called the Golden Bears."
+  - condition:
+    - type: slot
+      name: school_name
+      value: stanford
+    text: "The Stanford basketball team is called the Cardinal."
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_davis
+    text: "The UC Davis basketball team is called the Aggies."
+  - condition:
+    - type: slot
+      name: school_name
+      value: santa_clara
+    text: "The Santa Clara basketball team is called the Broncos."
+  - condition:
+    - type: slot
+      name: school_name
+      value: sf_state
+    text: "The San Francisco State has a basketball team called the Gators."
+  - condition:
+    - type: slot
+      name: school_name
+      value: st_marys
+    text: "The St Marys has a basketball team called the Gaels."
+  - condition:
+    - type: slot
+      name: school_name
+      value: cal_state_east_bay
+    text: "The Cal State East Bay basketball team is called the Pioneers"
+  - condition:
+    - type: slot
+      name: school_name
+      value: usf
+    text: "The USF has a basketball team called the Dons."
+  - text: "{school_name} does not have a basketball team."
+
+  utter_swimming:
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_berkeley
+    text: "The UC Berkeley swimming team is called the Golden Bears."
+  - condition:
+    - type: slot
+      name: school_name
+      value: stanford
+    text: "The Stanford swimming team is called the Cardinal."
+  - text: "{school_name} does not have a swimming team."
+
+  utter_rowing:
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_davis
+    text: "The UC Berkeley rowing team is called the Golden Bears."
+  - condition:
+    - type: slot
+      name: school_name
+      value: uc_davis
+    text: "The Stanford i team is called the Cardinal."
+  - text: "{school_name} does not have a rowing team."
+
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

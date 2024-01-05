@@ -1,0 +1,17 @@
+intent,slot_name
+faq_football,uc_berkeley
+faq_football,stanford
+faq_football,uc_davis
+faq_basketball,uc_berkeley
+faq_basketball,stanford
+faq_basketball,uc_davis
+faq_basketball,santa_clara
+faq_basketball,sf_state
+faq_basketball,st_marys
+faq_basketball,cal_state_east_bay
+faq_basketball,usf
+faq_swimming,uc_berkeley
+faq_rowing,uc_berkeley
+faq_rowing,stanford
+faq_swimming,uc_berkeley
+faq_swimming,stanford

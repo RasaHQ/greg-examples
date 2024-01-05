@@ -1,0 +1,75 @@
+version: "3.1"
+
+rules:
+- rule: faqs
+  steps:
+  - or:
+    - intent: faq_football
+    - intent: faq_basketball
+    - intent: faq_swimming
+    - intent: faq_rowing
+  - action: school_form
+  - active_loop: school_form
+
+- rule: submit faq
+  condition:
+  - active_loop: school_form
+  steps:
+  - action: school_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_faq_msg
+
+nlu:
+- intent: inform
+  examples: |
+    - [uc_berkeley](school_name)
+    - [stanford](school_name)
+    - [san_jose_state](school_name)
+    - [uc_davis](school_name)
+    - [santa_clara](school_name)
+    - [sf_state](school_name)
+    - [st_marys](school_name)
+    - [cal_state_east_bay](school_name)
+    - [usf](school_name)
+
+- intent: faq_football
+  examples: |
+    - tell me about football
+    - do they have a football program
+    - does [uc_berkeley](school_name) have a football team
+    - what about [stanford](school_name) and their football team
+
+- intent: faq_basketball
+  examples: |
+    - tell me about basketball
+    - do they have a basketball program
+    - does [sf_state](school_name) have a basketball team
+    - what about [uc_davis](school_name) and their basketball team
+    - i'm interested in basketball at [santa_clara](school_name)
+    - is there a basketball team at [st_marys](school_name)
+    - i want to know about basketball at [cal_state_east_bay](school_name)
+    - i heard there's a good basketball team at [usf](school_name)
+
+- intent: faq_swimming
+  examples: |
+    - tell me about swimming
+    - do they have a swimming program
+    - does [sf_state](school_name) have a swimming team
+    - what about [uc_davis](school_name) and their swimming team
+    - i'm interested in swimming at [santa_clara](school_name)
+    - is there a swimming team at [st_marys](school_name)
+    - i want to know about swimming at [cal_state_east_bay](school_name)
+    - i heard there's a good swimming team at [usf](school_name)
+
+- intent: faq_rowing
+  examples: |
+    - tell me about rowing
+    - do they have a rowing program
+    - does [sf_state](school_name) have a rowing team
+    - what about [uc_davis](school_name) and their rowing team
+    - i'm interested in rowing at [santa_clara](school_name)
+    - is there a rowing team at [st_marys](school_name)
+    - i want to know about rowing at [cal_state_east_bay](school_name)
+    - i heard there's a good rowing team at [usf](school_name)
