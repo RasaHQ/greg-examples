@@ -101,11 +101,6 @@ responses:
     text: "The UC Davis football team is called the Aggies."
   - condition:
     - type: slot
-      name: trigger_intent
-      value: faq_football
-    text: "{school_name} does not have a football team."
-  - condition:
-    - type: slot
       name: school_name
       value: uc_berkeley
     - type: slot
@@ -170,11 +165,6 @@ responses:
     text: "The USF has a basketball team called the Dons."
   - condition:
     - type: slot
-      name: trigger_intent
-      value: faq_basketball
-    text: "{school_name} does not have a basketball team."
-  - condition:
-    - type: slot
       name: school_name
       value: uc_berkeley
     - type: slot
@@ -191,11 +181,6 @@ responses:
     text: "The Stanford swimming team is called the Cardinal."
   - condition:
     - type: slot
-      name: trigger_intent
-      value: faq_swimming
-    text: "{school_name} does not have a swimming team."
-  - condition:
-    - type: slot
       name: school_name
       value: uc_berkeley
     - type: slot
@@ -210,11 +195,6 @@ responses:
       name: trigger_intent
       value: faq_rowing
     text: "The Stanford rowing team is called the Cardinal."
-  - condition:
-    - type: slot
-      name: trigger_intent
-      value: faq_rowing
-    text: "{school_name} does not have a rowing team."
   - text: "No message for school: {school_name}, intent: {trigger_intent}"
 
   utter_football:
