@@ -21,7 +21,19 @@ rules:
     - requested_slot: null
   - action: utter_faq_msg
 
+- rule: show slots
+  steps:
+  - intent: show_slots
+  - action: action_show_slots
+
 nlu:
+- intent: show_slots
+  examples: |
+    - show slots
+    - show the slot values
+    - what are the slot values
+    - can i sett the slot
+
 - intent: inform
   examples: |
     - [uc_berkeley](school_name)

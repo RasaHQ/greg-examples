@@ -14,12 +14,14 @@ intents:
   - faq_swimming
   - faq_rowing
   - inform
+  - show_slots
 
 entities:
   - school_name
 
 actions:
   - validate_school_form
+  - action_show_slots
 
 forms:
   school_form:
