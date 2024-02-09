@@ -3,8 +3,7 @@ flows:
     name: remove a contact
     description: remove a contact from your contact list
     steps:
-      - action: utter_list_contacts
-        next:
+      - noop:
         - if: slots.add_contact_name
           then:
           - action: utter_remove_contact_cancelled

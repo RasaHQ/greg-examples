@@ -3,10 +3,8 @@ flows:
     description: add a contact to your contact list
     name: add a contact
     steps:
-      - action: utter_list_contacts
-        next:
+      - noop:
         - if: slots.add_contact_name is empty or slots.add_contact_name is None or slots.add_contact_name is undefined
-        # - if: "not slots.add_contact_name"
           then:
           - collect: add_contact_name
           - action: utter_contact_added
