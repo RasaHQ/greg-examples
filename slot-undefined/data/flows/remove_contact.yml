@@ -1,0 +1,15 @@
+flows:
+  remove_contact:
+    name: remove a contact
+    description: remove a contact from your contact list
+    steps:
+      - action: utter_list_contacts
+        next:
+        - if: slots.add_contact_name
+          then:
+          - action: utter_remove_contact_cancelled
+            next: END
+        - else:
+          - collect: add_contact_name
+          - action: utter_contact_not_in_list
+            next: END
