@@ -5,7 +5,8 @@ flows:
     steps:
       - action: utter_list_contacts
         next:
-        - if: slots.add_contact_name is empty or slots.add_contact_name is None or slots.add_contact_name is undefined
+        - if: not slots.add_contact_name
+        # - if: slots.add_contact_name is empty or slots.add_contact_name is None or slots.add_contact_name is undefined
         # - if: "not slots.add_contact_name"
           then:
           - collect: add_contact_name
