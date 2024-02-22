@@ -1,0 +1,24 @@
+version: "3.1"
+
+flows:
+  event_signup:
+    description: user wants to to show, list or sign-up for an upcoming events
+    # description: user wants to know the available dates or upcoming schedule for an event and should provide event_name
+    steps:
+      - noop:
+        next:
+          # if we don't have an event_name, collect it
+          - if: not slots.event_name
+            then:
+              - action: action_show_events     # Utter available events with buttons
+              - collect: event_name
+                description: "The slot value can only be one of these values in the event_names slot"
+                reset_after_flow_ends: false
+                next:
+                  - if: slots.event_name = 'Cancel'
+                    then:
+                      - action: utter_cancel
+                        next: END
+                  - else: END
+          - else: END
+      # collect student details if not known

@@ -1,0 +1,21 @@
+version: "3.1"
+
+slots:
+  event_names:
+    type: list
+    mappings:
+    - type: custom
+  event_name:
+    type: text
+    mappings:
+    - type: custom
+
+actions:
+  - action_show_events
+
+responses:
+  utter_cancel:
+    - text: "Cancelled the action"
+  utter_ask_event_name_custom_action:
+    - text: Here are the events we have coming up, what looks interesting?
+  
