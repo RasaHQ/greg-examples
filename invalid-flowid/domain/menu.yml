@@ -1,0 +1,23 @@
+slots:
+  student_email:
+    type: text
+    mappings:
+      - type: custom
+  menu_choice:
+    type: text
+    mappings:
+      - type: custom
+
+responses:
+  utter_menu:
+    - text: "Select one of the options below to learn more:"
+    # - text: "We offer a variety of appointments and events. You can schedule an admissions appointment or attend an event."
+      buttons:
+      - title: "List contacts"
+        payload: "List Contacts"
+      # - title: "Add contact"
+      #   payload: "Make an in person appointment"
+      # - title: "Remove contact"
+      #   payload: "Make a virtual appointment"
+      - title: "Nevermind"
+        payload: "Cancel flow"

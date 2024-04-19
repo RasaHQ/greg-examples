@@ -1,0 +1,13 @@
+flows:
+  main_menu:
+    name: main menu
+    description: when the user asks any question about contacts, show the main menu
+    steps:      
+      - action: utter_menu
+      - collect: menu_choice
+        reset_after_flow_ends: true
+        next:
+          - if: slots.menu_choice = 'List Contacts'
+            then:
+              - link: list_contacts
+          - else: END

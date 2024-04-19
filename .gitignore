@@ -24,3 +24,4 @@ chatroom/
 
 .env
 .python-version
+.venv/
